@@ -10,6 +10,7 @@ The current Pensieve implementation defines custome Query, Weight and Scorer cla
 The APIs change over time. At the release of each major version (x.0.0), incompatible changes happen including:
 * Removal of classes, methods and/or field previously marked @Deprecated or @deprecated.
 * Existing classes, methods and field become *final*, no longer allowing subclassing or overriding.
+* Exsiting interfaces and/or (often abstract) classes change, requring new methods to be defined, and some methods become no longer overridable.
 * Programming models change, often to enable more flexible, plugin architecture.
 
 Lucene lists (or at least tries to list) all major differences between the version and its previous major version in these migration notes:
