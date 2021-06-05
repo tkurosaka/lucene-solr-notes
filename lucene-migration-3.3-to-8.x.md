@@ -1,9 +1,9 @@
 # Lucene 3.3 to 8.8 Migration Notes
-This repo is just to share information I collected to migrate [Okapi Framework](https://okapiframework.org/wiki/index.php?title=Main_Page) core library from Lucene 3.3 to 8.8, to implement its issue [#837](https://bitbucket.org/okapiframework/okapi/issues/837/).
+This repo is just to share the information I have been collecting to migrate [Okapi Framework](https://okapiframework.org/wiki/index.php?title=Main_Page) core library from Lucene 3.3 to 8.8, to implement its issue [#837](https://bitbucket.org/okapiframework/okapi/issues/837/).
 
-The Pensieve Translation Memory, a part of Okapi Framework, uses Lucene to find exsiting *translation pair*, to reuse the existing translations. It uses a very old Lucene, version 3.3, and we wanted to upgrade it to 8.8. 
+The Pensieve Translation Memory, a part of Okapi Framework, uses Lucene to find exsiting *translation pair*, to reuse the existing translations. It uses a very old Lucene, version 3.3, and we want to upgrade it to 8.8. 
 
-The current Pensieve implementation defines custome Query, Weight and Scorer classes. It turned out there have been a lot of incompatible changes between 3.3 and 8.8, and straight port was not possible.
+The current Pensieve implementation defines custome Query, Weight and Scorer classes. It turned out there have been a lot of incompatible changes between 3.3 and 8.8, and straight port is not possible.
 
 # Version Incompatibility - Overview
 
