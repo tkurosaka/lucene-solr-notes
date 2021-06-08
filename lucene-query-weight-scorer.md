@@ -1,5 +1,7 @@
 # How Does Query, Weight and Scorer Work?
 *this is work in progress*
+ToDo: Find out how the score is actually calculated.
+
 ## Query
 Query is a class representing a query. The simplest query is a TermQuery. Listing "red book" creates a BooleanQuery that combines a TermQuery for "red" and a TermQuery for "book".
 
@@ -21,6 +23,7 @@ A Scorer iterates in order over all matching documents and assign them a score. 
 
 * float getMaxScore(int upTo)
 * DocIdSetIterator iterator()
+* advanceShallow(int target)
   
 Despite its name, a Scorer doesn't calculate the score of the match(?).
 
