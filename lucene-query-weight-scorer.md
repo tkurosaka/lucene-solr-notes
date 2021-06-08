@@ -1,6 +1,43 @@
 # How Does Query, Weight and Scorer Work?
 *this is work in progress*
+## Query
+Query is a class representing a query. The simplest query is a TermQuery. Listing "red book" creates a BooleanQuery that combines a TermQuery for "red" and a TermQuery for "book".
 
+These methods must be defined:
+* boolean equals(Object other)
+* int hashCode()
+* String toString(String fieldName)
+
+## Weight
+A Weight object is returned from Query.createWeight(IndexSearcher is, ScoreMode mode, float boost) for the *top level query*. The Weight object keeps the statistical data about the index searcher.
+
+These methods must be defined:
+* Explanation explain(LeafReaderContext context, int doc)
+* void extractTerms(Set<Term> terms)  // Deprecated
+* Scorer scorer(LeafReaderContext context)
+  
+## Scorer
+A Scorer iterates in order over all matching documents and assign them a score. A Scorer is created from a Weight object.
+
+* float getMaxScore(int upTo)
+* DocIdSetIterator iterator()
+  
+Despite its name, a Scorer doesn't calculate the score of the match(?).
+
+Note: Similarity.SimScorer does *not* extends this Scorer.
+
+## DocIdSetIterator
+  
+DocIdSetIterator is used to iterate over a set of documents, and the following abstract method must be defined.
+
+* long cost()
+* int docId() // -1 if nextDoc() or advance(int) were not called yet. NO_MORE_DOCS if no more docs to return.
+* int nextDoc()
+  
+
+  
+Note: DocIdSetIterator does *not* implement the Iterator.
+  
 
 
 # References
