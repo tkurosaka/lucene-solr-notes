@@ -3,15 +3,15 @@
 ToDo: Find out how the score is actually calculated.
 
 ## Query
-Query is a class representing a query. The simplest query is a TermQuery. Listing "red book" creates a BooleanQuery that combines a TermQuery for "red" and a TermQuery for "book".
+[Query](https://lucene.apache.org/core/8_8_2/core/org/apache/lucene/search/Query.html) is a class representing a query. The simplest query is a TermQuery. Listing "red book" creates a BooleanQuery that combines a TermQuery for "red" and a TermQuery for "book".
 
 These methods must be defined:
 * boolean equals(Object other)
-* int hashCode()
+* int hashCode() // Used for caching. Each Query subclass must create a unique hash code.
 * String toString(String fieldName)
 
 ## Weight
-A Weight object is returned from Query.createWeight(IndexSearcher is, ScoreMode mode, float boost) for the *top level query*. The Weight object keeps the statistical data about the index searcher.
+A [Weight](https://lucene.apache.org/core/8_8_2/core/org/apache/lucene/search/Weight.html) object is returned from Query.createWeight(IndexSearcher is, ScoreMode mode, float boost) for the *top level query*. The Weight object keeps the statistical data about the index searcher.
 
 These methods must be defined:
 * Explanation explain(LeafReaderContext context, int doc)
@@ -19,11 +19,13 @@ These methods must be defined:
 * Scorer scorer(LeafReaderContext context)
   
 ## Scorer
-A Scorer iterates in order over all matching documents and assign them a score. A Scorer is created from a Weight object.
+A [Scorer](https://lucene.apache.org/core/8_8_2/core/org/apache/lucene/search/Scorer.html) iterates in order over all matching documents and assign them a score. A Scorer is created from a Weight object.
 
 * float getMaxScore(int upTo)
 * DocIdSetIterator iterator()
 * advanceShallow(int target)
+* // ffoat score() //TODO: From the parent class Scorable. Is this defined in Scorer?
+* // int docID() //TODO: From the parent class Scorable. Is this defined in Scorer?
   
 Despite its name, a Scorer doesn't calculate the score of the match(?).
 
@@ -31,7 +33,7 @@ Note: Similarity.SimScorer does *not* extends this Scorer.
 
 ## DocIdSetIterator
   
-DocIdSetIterator is used to iterate over a set of documents, and the following abstract method must be defined.
+[DocIdSetIterator](https://lucene.apache.org/core/8_8_2/core/org/apache/lucene/search/DocIdSetIterator.html) is used to iterate over a set of documents, and the following abstract method must be defined.
 
 * long cost()
 * int docId() // -1 if nextDoc() or advance(int) were not called yet. NO_MORE_DOCS if no more docs to return.
