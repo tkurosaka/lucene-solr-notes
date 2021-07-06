@@ -27,5 +27,7 @@ There is no migration guide spanning more than one major versions. To migrate fo
 # Apendices
 ## Solr Change List
 Solr has a comprehensive list of changes, all the way from version 1.1.0 to the latest version. As of July 2021, this is the latest:
+
 https://solr.apache.org/docs/8_9_0/changes/Changes.html
+
 Click the "Expand All" button at the top to see the complete changes.
