@@ -24,8 +24,8 @@ A [Scorer](https://lucene.apache.org/core/8_8_2/core/org/apache/lucene/search/Sc
 * float getMaxScore(int upTo)
 * DocIdSetIterator iterator()
 * advanceShallow(int target)
-* float score() // TODO: Does this return the score of the document that the iterator is currently pointing ?
-* int docID() //TODO: Does this return the soc id of  ..... ?
+* float score() // This returns the score of the document that the iterator is currently pointing to? TODO: Investigate)
+* int docID() // This returns the doc id (of the document that the iterator is currently pointing to? TODO: Investigate)
   
 Important: Similarity.SimScorer has nothing to do with Scorer. SimScorer is *not* a child of the Scorer. Don't get confused.
 
