@@ -24,12 +24,10 @@ A [Scorer](https://lucene.apache.org/core/8_8_2/core/org/apache/lucene/search/Sc
 * float getMaxScore(int upTo)
 * DocIdSetIterator iterator()
 * advanceShallow(int target)
-* // ffoat score() //TODO: From the parent class Scorable. Is this defined in Scorer?
-* // int docID() //TODO: From the parent class Scorable. Is this defined in Scorer?
+* float score() // TODO: Does this return the score of the document that the iterator is currently pointing ?
+* int docID() //TODO: Does this return the soc id of  ..... ?
   
-Despite its name, a Scorer doesn't calculate the score of the match(?).
-
-Note: Similarity.SimScorer does *not* extends this Scorer.
+Important: Similarity.SimScorer has nothing to do with Scorer. SimScorer is *not* a child of the Scorer. Don't get confused.
 
 ## DocIdSetIterator
   
@@ -41,13 +39,13 @@ Note: Similarity.SimScorer does *not* extends this Scorer.
   
 
   
-Note: DocIdSetIterator does *not* implement the Iterator.
+Important: DocIdSetIterator does *not* implement Java's Iterator. Don't get confused.
   
 
 
 # References
 
-* [Doug Turnbull's Buld your own Custom Lucene query and scorer](https://opensourceconnections.com/blog/2014/01/20/build-your-own-custom-lucene-query-and-scorer/)
+* [Build your own Custom Lucene query and scorer](https://opensourceconnections.com/blog/2014/01/20/build-your-own-custom-lucene-query-and-scorer/) by [Doug Turnbull](https://opensourceconnections.com/blog/author/doug-turnbull/) This explains the relationship among Query, Weight and Scorer using a real example. Unfortunately it is based on Solr 4.6, and the code example would not work with Solr 8.x.
 
 # Appendix : Background
 The Pensieve Translation Memory system needs to know how good a match is, we need a scoring system that tells me whether the match is 100% (exact match), or similar but not exact (less than 100%).
